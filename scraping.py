@@ -114,7 +114,6 @@ def hemispheres(browser):
     # 2. Create a list to hold the images and titles.
     hemisphere_image_urls = []
 
-    #items = browser.find_by_css('a.product-item h3')
     # 3. Write code to retrieve the image urls and titles for each hemisphere.
     for i in range(4):
         #create empty dictionary
@@ -132,14 +131,13 @@ def hemispheres(browser):
 
 
 def scrape_hemisphere(html_text):
-    # parse html text
+    
     hemi_soup = soup(html_text, "html.parser")
-    # adding try/except for error handling
+
     try:
         title_elem = hemi_soup.find("h2", class_="title").get_text()
         sample_elem = hemi_soup.find("a", text="Sample").get("href")
     except AttributeError:
-        # Image error will return None, for better front-end handling
         title_elem = None
         sample_elem = None
     hemispheres = {
